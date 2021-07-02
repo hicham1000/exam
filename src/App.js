@@ -1,25 +1,34 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
+import "bootstrap/dist/css/bootstrap.min.css"
 import './App.css';
+import  React,{useState} from 'react';
 
+
+import SeriesList from './SeriesList';
+import series from './shows.json';
+// import Ajoutedefavoris from './Ajoutedefavoris';
+import SearchBox from './SearchBox';
 function App() {
+//   const [series,setSeries]= useState([])
+const [searchWord,setsearchWord]=useState("");
+console.log(searchWord);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  <div>
+    <div>
+        <SearchBox onChange={
+  (value) => {
+  setsearchWord(value)
+  }
+  
+        }/>
     </div>
+    <div className='container-fluid'> 
+      <SeriesList series ={series}/>
+    </div>
+
+</div>
   );
-}
+};
 
 export default App;
+
